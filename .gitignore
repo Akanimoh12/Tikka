@@ -1,0 +1,41 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+dist/
+build/
+
+# turbo
+.turbo/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# os
+.DS_Store
+Thumbs.db
+
+# testing
+coverage/
+
+# misc
+*.local
