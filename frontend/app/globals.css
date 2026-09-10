@@ -1,26 +1,198 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.overflow-theme {
+  --of-ink: oklch(0.145 0.035 248);
+  --of-paper: oklch(0.965 0.006 248);
+  --of-warm: oklch(0.925 0.025 82);
+  --of-grid: oklch(0.72 0.16 252 / 0.5);
+  --of-muted: oklch(0.49 0.018 248);
+
+  --of-blue: #5ba4ff;
+  --of-yellow: #ffcc33;
+  --of-mint: #53dca2;
+  --of-orange: #ff841f;
+  --of-lavender: #d0a1ff;
+  --of-violet: #9d72ff;
+  --of-pink: #ff86b9;
+
+  --of-line: 2px solid var(--of-ink);
+
+  --ease-precise: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --of-container: 1080px;
+  --of-prose: 46rem;
+  --of-prose-tight: 42rem;
+
+  min-height: 100dvh;
+  padding-top: 72px;
+  background: var(--of-paper);
+  color: var(--of-ink);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.025em;
+  overflow-x: clip;
+}
+
+@media (max-width: 680px) {
+  .overflow-theme {
+    padding-top: 64px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.overflow-theme * {
+  box-sizing: border-box;
+}
+.overflow-theme button,
+.overflow-theme a {
+  color: inherit;
+  font: inherit;
+}
+.overflow-theme button {
+  cursor: pointer;
+}
+.overflow-theme :focus-visible {
+  outline: 3px solid var(--of-orange);
+  outline-offset: 3px;
+}
+
+@layer base {
+  button:not(:disabled),
+  a,
+  [role="button"] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.of-grid-paper {
+  background-color: var(--of-paper);
+  background-image: linear-gradient(var(--of-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--of-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.of-h1-hero {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 9vw, 10.5rem);
+  font-weight: 900;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.of-h2-hero {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.4vw, 2.55rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  max-width: 11ch;
+}
+
+.of-lede-hero {
+  font-size: clamp(1rem, 1.25vw, 1.24rem);
+  font-weight: 600;
+  line-height: 1.52;
+  max-width: 42ch;
+}
+
+.of-h2-section {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4.8vw, 5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  max-width: 13ch;
+}
+
+.of-lede-section {
+  font-size: clamp(1.08rem, 1.45vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.42;
+  max-width: 44ch;
+}
+
+.of-container {
+  max-width: var(--of-container);
+  margin-inline: auto;
+}
+
+.of-prose {
+  max-width: var(--of-prose);
+  margin-inline: auto;
+}
+
+.of-prose-tight {
+  max-width: var(--of-prose-tight);
+  margin-inline: auto;
+}
+
+.of-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border: var(--of-line);
+  background: var(--of-paper);
+}
+
+.of-section-padding {
+  padding: clamp(48px, 7vw, 116px) clamp(28px, 7vw, 128px);
+}
+
+.of-shadow-sm {
+  box-shadow: 3px 3px 0 var(--of-ink);
+}
+
+.of-shadow {
+  box-shadow: 4px 4px 0 var(--of-ink);
+}
+
+.of-shadow-md {
+  box-shadow: 6px 6px 0 var(--of-ink);
+}
+
+.of-shadow-lg {
+  box-shadow: 8px 8px 0 var(--of-ink);
+}
+
+.of-shadow-yellow {
+  box-shadow: 10px 10px 0 var(--of-yellow);
+}
+
+.of-shadow-blue {
+  box-shadow: 6px 6px 0 var(--of-blue);
+}
+
+.of-shadow-orange {
+  box-shadow: 6px 6px 0 var(--of-orange);
+}
+
+.of-pill {
+  border-radius: 999px;
+}
+
+.of-transition {
+  transition: transform 110ms var(--ease-precise), box-shadow 160ms,
+    background 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
