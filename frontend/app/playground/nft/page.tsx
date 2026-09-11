@@ -1,14 +1,16 @@
-import { WidgetPlaceholder } from "@/components/widget-placeholder";
+"use client";
+
+import { TikkaWidget } from "@tikka/widget/react";
 
 const gradients = [
-  "linear-gradient(135deg, var(--of-blue), var(--of-lavender))",
+  "linear-gradient(135deg, var(--of-blue), var(--of-mint))",
   "linear-gradient(135deg, var(--of-mint), var(--of-blue))",
   "linear-gradient(135deg, var(--of-yellow), var(--of-orange))",
-  "linear-gradient(135deg, var(--of-pink), var(--of-violet))",
+  "linear-gradient(135deg, var(--of-pink), var(--of-orange))",
   "linear-gradient(135deg, var(--of-orange), var(--of-pink))",
-  "linear-gradient(135deg, var(--of-violet), var(--of-blue))",
+  "linear-gradient(135deg, var(--of-blue), var(--of-yellow))",
   "linear-gradient(135deg, var(--of-mint), var(--of-yellow))",
-  "linear-gradient(135deg, var(--of-lavender), var(--of-pink))",
+  "linear-gradient(135deg, var(--of-pink), var(--of-blue))",
 ];
 
 export default function NftPlaygroundPage() {
@@ -58,7 +60,14 @@ export default function NftPlaygroundPage() {
               -2.1% (24h)
             </p>
           </div>
-          <WidgetPlaceholder />
+          <div>
+            <p className="text-[0.7rem] font-bold uppercase tracking-wide text-[var(--of-muted)] mb-2">
+              Predict floor price direction
+            </p>
+            <div className="border-2 border-[var(--of-ink)] of-shadow-sm bg-[var(--of-warm)] p-4">
+              <TikkaWidget market="BTC-USD" window="15m" theme="auto" size="compact" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

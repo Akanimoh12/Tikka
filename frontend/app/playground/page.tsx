@@ -59,7 +59,7 @@ export default function PlaygroundIndexPage() {
           href="/playground/dashboard"
           className="of-transition inline-block border-2 border-[var(--of-ink)] of-shadow-sm px-5 py-3 text-[0.85rem] font-bold hover:-translate-y-0.5 hover:of-shadow"
         >
-          Embedder analytics (stretch) →
+          Embedder analytics (stretch)
         </Link>
       </div>
     </div>

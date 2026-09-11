@@ -1,4 +1,6 @@
-import { WidgetPlaceholder } from "@/components/widget-placeholder";
+"use client";
+
+import { TikkaWidget } from "@tikka/widget/react";
 
 const stats = [
   { label: "Price", value: "$0.84210", accent: "var(--of-ink)" },
@@ -16,7 +18,7 @@ export default function DexPlaygroundPage() {
             Mock DEX host page
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(2.4rem,5vw,3.6rem)] font-black tracking-[-0.04em]">
-            SOMI / USD
+            BTC / USD
           </h1>
         </div>
         <span className="of-pill border-2 border-[var(--of-ink)] bg-[var(--of-mint)] px-4 py-2 text-[0.85rem] font-extrabold">
@@ -64,7 +66,9 @@ export default function DexPlaygroundPage() {
           </div>
         </div>
 
-        <WidgetPlaceholder />
+        <div className="border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-warm)] p-4">
+          <TikkaWidget market="BTC-USD" window="15m" theme="auto" size="compact" />
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
-import { WidgetPlaceholder } from "@/components/widget-placeholder";
+"use client";
+
+import { TikkaWidget } from "@tikka/widget/react";
 
 const chatMessages = [
   { user: "somi_max", message: "let's gooo" },
@@ -15,7 +17,7 @@ export default function StreamPlaygroundPage() {
         Mock live-stream host page
       </p>
       <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(2.4rem,5vw,3.6rem)] font-black tracking-[-0.04em]">
-        SOMI trading, live
+        BTC trading, live
       </h1>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
@@ -41,7 +43,9 @@ export default function StreamPlaygroundPage() {
             </div>
           </div>
 
-          <WidgetPlaceholder />
+          <div className="border-2 border-[var(--of-ink)] of-shadow-sm bg-[var(--of-warm)] p-4">
+            <TikkaWidget market="BTC-USD" window="15m" theme="auto" size="compact" />
+          </div>
         </div>
 
         <div className="border-2 border-[var(--of-ink)] of-shadow-sm bg-[var(--of-warm)] flex flex-col max-h-[520px]">
