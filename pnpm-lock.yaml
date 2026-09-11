@@ -10,9 +10,15 @@ importers:
 
   frontend:
     dependencies:
+      '@tikka/core':
+        specifier: workspace:*
+        version: link:../packages/core
       '@tikka/widget':
         specifier: workspace:*
         version: link:../sdk
+      '@wagmi/core':
+        specifier: ^2.16.0
+        version: 2.22.1(@types/react@19.3.0)(react@19.3.0)(typescript@5.9.3)(viem@2.56.3(typescript@5.9.3))
       next:
         specifier: ^15.5.0
         version: 15.5.25(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -22,6 +28,9 @@ importers:
       react-dom:
         specifier: ^19
         version: 19.3.0(react@19.3.0)
+      viem:
+        specifier: ^2.21.0
+        version: 2.56.3(typescript@5.9.3)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
