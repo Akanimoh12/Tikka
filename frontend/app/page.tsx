@@ -27,31 +27,35 @@ export default function Home() {
   return (
     <>
       <section className="of-section-padding of-grid-paper">
-        <div className="of-container grid grid-cols-1 lg:grid-cols-[minmax(320px,0.85fr)_minmax(520px,1.15fr)] gap-12 lg:gap-16 items-center">
-          <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
-            <h1 className="of-h1-hero">Ships in one tag</h1>
-            <p className="of-lede-hero mx-auto lg:mx-0">
+        <div className="of-container grid grid-cols-1 items-center gap-16 lg:grid-cols-[minmax(320px,1fr)_minmax(400px,0.9fr)] lg:gap-20">
+          <div className="flex flex-col items-center gap-8 text-center lg:items-start lg:text-left">
+            <h1 className="text-[clamp(3rem,6vw,5.5rem)] font-black leading-[0.96] tracking-[-0.04em] font-[family-name:var(--font-space-grotesk)] max-w-[13ch]">
+              Ships in one tag
+            </h1>
+            <p className="max-w-[42ch] text-[1.1rem] font-semibold leading-[1.55] text-[var(--of-muted)]">
               Tikka is a drop-in widget for DreamDEX Event Contracts. One
               script tag or one React component gets you a live Up/Down
               market, wired to a real wallet, settling on-chain on Somnia.
-              The card below is live right now.
+              The card beside this is live right now.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+            <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
               <Link
                 href="/docs"
-                className="of-shadow of-transition border-2 border-[var(--of-ink)] bg-[var(--of-yellow)] px-5 py-3 text-sm font-extrabold hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                className="of-shadow of-transition border-2 border-[var(--of-ink)] bg-[var(--of-yellow)] px-6 py-3.5 text-base font-extrabold hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
               >
                 Read the docs
               </Link>
               <Link
                 href="/playground"
-                className="of-shadow of-transition border-2 border-[var(--of-ink)] bg-[var(--of-paper)] px-5 py-3 text-sm font-extrabold hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                className="of-shadow of-transition border-2 border-[var(--of-ink)] bg-[var(--of-paper)] px-6 py-3.5 text-base font-extrabold hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
               >
                 See it on three sites
               </Link>
             </div>
           </div>
-          <HeroWidget />
+          <div className="flex justify-center lg:justify-end">
+            <HeroWidget />
+          </div>
         </div>
       </section>
 
@@ -87,10 +91,10 @@ export default function Home() {
                 <span className="font-[family-name:var(--font-mono)] text-[0.78rem] font-bold tracking-[0.1em] text-[var(--of-muted)]">
                   {step.number}
                 </span>
-                <h3 className="font-[family-name:var(--font-space-grotesk)] text-lg font-extrabold">
+                <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-extrabold">
                   {step.title}
                 </h3>
-                <p className="text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+                <p className="text-[0.95rem] font-semibold leading-[1.6] text-[var(--of-muted)]">
                   {step.body}
                 </p>
               </div>

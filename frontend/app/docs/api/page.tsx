@@ -65,11 +65,11 @@ export default function ApiDocsPage() {
       </p>
 
       <div className="mt-8 border-2 border-[var(--of-ink)] of-shadow-sm bg-[var(--of-warm)] p-6 max-w-[46rem]">
-        <p className="text-[0.85rem] font-bold leading-[1.5]">
+        <p className="text-[0.95rem] font-bold leading-[1.5]">
           @tikka/core is workspace-internal today, not published to the
           public npm registry.
         </p>
-        <p className="mt-2 text-[0.85rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+        <p className="mt-2 text-[0.95rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
           It ships as a private package inside this monorepo alongside{" "}
           <code className="font-mono">@tikka/widget</code>. The examples on
           this page show the real, currently implemented API surface — the
@@ -83,13 +83,13 @@ export default function ApiDocsPage() {
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
         createClient
       </h2>
-      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+      <p className="mt-4 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
         <code className="font-mono">createClient(config?)</code> returns a{" "}
         <code className="font-mono">TikkaClient</code> scoped to a network
         (Shannon testnet by default). It exposes:
       </p>
       <div className="mt-6 border-2 border-[var(--of-ink)] of-shadow-sm overflow-x-auto">
-        <table className="w-full border-collapse text-left text-[0.85rem]">
+        <table className="w-full border-collapse text-left text-[0.95rem]">
           <thead>
             <tr className="bg-[var(--of-warm)]">
               <th className="border-b-2 border-[var(--of-ink)] px-4 py-3 font-extrabold">
@@ -154,7 +154,7 @@ export default function ApiDocsPage() {
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
         createPrediction
       </h2>
-      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+      <p className="mt-4 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
         <code className="font-mono">createPrediction(params, config?)</code>{" "}
         is a standalone function, not a client method. It takes a{" "}
         <code className="font-mono">marketId</code>, a{" "}
@@ -168,7 +168,7 @@ export default function ApiDocsPage() {
         it doesn&apos;t assume wagmi or any particular connector, only viem
         types.
       </p>
-      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+      <p className="mt-4 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
         Failures are typed, not thrown. The result is a discriminated union —
         check <code className="font-mono">result.ok</code> and branch on{" "}
         <code className="font-mono">result.error</code> for the failure case

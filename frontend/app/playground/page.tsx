@@ -47,7 +47,7 @@ export default function PlaygroundIndexPage() {
             <h2 className="mt-4 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold leading-tight">
               {host.label}
             </h2>
-            <p className="mt-2 text-[0.85rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+            <p className="mt-2 text-[0.95rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
               {host.description}
             </p>
           </Link>
@@ -57,7 +57,7 @@ export default function PlaygroundIndexPage() {
       <div className="mt-8">
         <Link
           href="/playground/dashboard"
-          className="of-transition inline-block border-2 border-[var(--of-ink)] of-shadow-sm px-5 py-3 text-[0.85rem] font-bold hover:-translate-y-0.5 hover:of-shadow"
+          className="of-transition inline-block border-2 border-[var(--of-ink)] of-shadow-sm px-5 py-3 text-[0.95rem] font-bold hover:-translate-y-0.5 hover:of-shadow"
         >
           Embedder analytics (stretch)
         </Link>

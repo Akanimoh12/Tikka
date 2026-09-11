@@ -36,7 +36,7 @@ export default function DashboardPlaygroundPage() {
       </div>
 
       <div className="mt-10 border-2 border-dashed border-[var(--of-ink)]/40 p-6 max-w-[46rem]">
-        <p className="text-[0.85rem] font-semibold text-[var(--of-muted)]">
+        <p className="text-[0.95rem] font-semibold text-[var(--of-muted)]">
           Real numbers, per-market breakdowns, and a date range picker land
           here once the core SDK is tracking embed-level events.
         </p>

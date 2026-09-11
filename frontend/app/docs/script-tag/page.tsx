@@ -44,7 +44,7 @@ export default function ScriptTagDocsPage() {
         Attributes
       </h2>
       <div className="mt-6 border-2 border-[var(--of-ink)] of-shadow-sm overflow-x-auto">
-        <table className="w-full border-collapse text-left text-[0.85rem]">
+        <table className="w-full border-collapse text-left text-[0.95rem]">
           <thead>
             <tr className="bg-[var(--of-warm)]">
               <th className="border-b-2 border-[var(--of-ink)] px-4 py-3 font-extrabold">
@@ -111,7 +111,7 @@ export default function ScriptTagDocsPage() {
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
         Mounting programmatically
       </h2>
-      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+      <p className="mt-4 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
         If your page builds the element dynamically — after a route change,
         inside a component you render client-side, or in response to user
         action — call <code className="font-mono">Tikka.mount(element, config)</code>{" "}

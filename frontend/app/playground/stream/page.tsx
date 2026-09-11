@@ -56,7 +56,7 @@ export default function StreamPlaygroundPage() {
           </div>
           <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3">
             {chatMessages.map((chat, i) => (
-              <div key={i} className="text-[0.82rem] leading-[1.4]">
+              <div key={i} className="text-[0.9rem] leading-[1.5]">
                 <span className="font-extrabold text-[var(--of-blue)]">
                   {chat.user}
                 </span>{" "}

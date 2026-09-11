@@ -51,7 +51,7 @@ export default function EventsDocsPage() {
       </p>
 
       <div className="mt-10 border-2 border-[var(--of-ink)] of-shadow-sm overflow-x-auto">
-        <table className="w-full border-collapse text-left text-[0.85rem]">
+        <table className="w-full border-collapse text-left text-[0.95rem]">
           <thead>
             <tr className="bg-[var(--of-warm)]">
               <th className="border-b-2 border-[var(--of-ink)] px-4 py-3 font-extrabold">
@@ -104,7 +104,7 @@ export default function EventsDocsPage() {
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
         Listening without React
       </h2>
-      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+      <p className="mt-4 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
         This is the framework-agnostic escape hatch: any host page can react
         to a settlement, a submitted prediction, or an error with plain{" "}
         <code className="font-mono">addEventListener</code>, no React

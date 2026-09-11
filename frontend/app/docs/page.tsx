@@ -43,7 +43,7 @@ export default function DocsIndexPage() {
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold">
         Install
       </h2>
-      <p className="mt-3 max-w-[46rem] text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+      <p className="mt-3 max-w-[46rem] text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
         <code className="font-mono">@tikka/widget</code> is currently built
         and versioned inside this monorepo and is not yet published to the
         public npm registry. Once published, installing it will look like
@@ -56,7 +56,7 @@ export default function DocsIndexPage() {
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold">
         Quickstart
       </h2>
-      <p className="mt-3 max-w-[46rem] text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+      <p className="mt-3 max-w-[46rem] text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
         Both embed modes mount the identical widget. Pick whichever matches
         the host page.
       </p>
@@ -66,7 +66,7 @@ export default function DocsIndexPage() {
           <h3 className="font-[family-name:var(--font-display)] text-[1.1rem] font-extrabold">
             Script tag
           </h3>
-          <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
+          <p className="mt-2 text-[0.95rem] font-semibold text-[var(--of-muted)]">
             Framework-agnostic. Works on any HTML page.
           </p>
           <div className="mt-4">
@@ -77,7 +77,7 @@ export default function DocsIndexPage() {
           <h3 className="font-[family-name:var(--font-display)] text-[1.1rem] font-extrabold">
             React
           </h3>
-          <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
+          <p className="mt-2 text-[0.95rem] font-semibold text-[var(--of-muted)]">
             A typed component for apps already running React.
           </p>
           <div className="mt-4">
@@ -100,7 +100,7 @@ export default function DocsIndexPage() {
           <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold leading-tight">
             Script tag
           </h3>
-          <p className="mt-2 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+          <p className="mt-2 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
             The [data-tikka] auto-scan attributes and the Tikka.mount
             programmatic API.
           </p>
@@ -116,7 +116,7 @@ export default function DocsIndexPage() {
           <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold leading-tight">
             React component
           </h3>
-          <p className="mt-2 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+          <p className="mt-2 text-[1rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
             Every prop on TikkaWidget, with a callback usage example.
           </p>
         </Link>
@@ -128,7 +128,7 @@ export default function DocsIndexPage() {
           <h3 className="font-[family-name:var(--font-display)] text-[1.15rem] font-extrabold">
             Events reference
           </h3>
-          <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
+          <p className="mt-2 text-[0.95rem] font-semibold text-[var(--of-muted)]">
             The tikka:* DOM events every widget instance dispatches.
           </p>
         </Link>
@@ -139,7 +139,7 @@ export default function DocsIndexPage() {
           <h3 className="font-[family-name:var(--font-display)] text-[1.15rem] font-extrabold">
             Core API reference
           </h3>
-          <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
+          <p className="mt-2 text-[0.95rem] font-semibold text-[var(--of-muted)]">
             For building custom UI directly on @tikka/core.
           </p>
         </Link>
