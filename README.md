@@ -166,21 +166,26 @@ You'll run the actual `vercel` deploy / project creation yourself. What's
 prepared for you:
 
 - A root-level [`vercel.json`](./vercel.json) that tells Vercel:
-  - `framework: "nextjs"` (Vercel can't auto-detect this from the repo
-    root, since the root `package.json` isn't the Next.js app — the app
-    lives in `frontend/`)
-  - `buildCommand: "pnpm install && pnpm -r build"` — this builds
-    `packages/core` and `sdk` first (via pnpm's workspace graph) and then
-    `frontend`, whose own `build` script copies `widget.js` into
+  - `framework: "nextjs"`
+  - `buildCommand: "pnpm install && pnpm -r build"` — run with the
+    Vercel project's **Root Directory set to `frontend`** (see below),
+    pnpm resolves the workspace from there and still builds
+    `packages/core` and `sdk` first via pnpm's own workspace graph,
+    then `frontend`, whose own `build` script copies `widget.js` into
     `frontend/public/` before running `next build`
-  - `outputDirectory: "frontend/.next"`
+  - `outputDirectory: ".next"` — relative to the Root Directory
+    (`frontend`), so this resolves to `frontend/.next`
 
 **Vercel project settings to set once, in the dashboard:**
-- **Root Directory:** leave at the repo root (do not set it to `frontend`)
-  — `vercel.json` above already points at `frontend/.next` for output and
-  runs the build from the root so the workspace packages build first.
-- **Framework Preset:** Next.js (should be picked up from `vercel.json`;
-  confirm it if the dashboard shows "Other").
+- **Root Directory: `frontend`.** This is required — Vercel resolves
+  `outputDirectory` relative to the Root Directory, and Next.js only
+  auto-detects the project when Root Directory points at the folder
+  that actually contains `next`. Leaving Root Directory at the repo
+  root produces `frontend/frontend/.next` (a real error seen while
+  setting this up) since the build command itself already runs from
+  inside `frontend/`.
+- **Framework Preset:** Next.js (should be picked up automatically once
+  Root Directory is set correctly).
 - **Install Command / Build Command / Output Directory:** all handled by
   `vercel.json` — no manual overrides needed unless Vercel's UI doesn't
   pick up the file for some reason, in which case paste the three values
