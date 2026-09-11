@@ -6,6 +6,7 @@ node_modules/
 out/
 dist/
 build/
+frontend/public/widget.js
 
 # turbo
 .turbo/

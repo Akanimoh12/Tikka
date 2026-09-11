@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "copy-widget": "node -e \"const fs=require('fs');fs.mkdirSync('public',{recursive:true});fs.copyFileSync('../sdk/dist/widget.js','public/widget.js')\"",
+    "build": "pnpm run copy-widget && next build",
     "start": "next start",
     "lint": "eslint"
   },
