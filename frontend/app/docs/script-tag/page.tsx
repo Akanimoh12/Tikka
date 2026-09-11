@@ -1,20 +1,20 @@
 import { CodeBlock } from "@/components/code-block";
 
-const scanExample = `<script src="https://cdn.tikka.dev/widget.js"></script>
+const scanExample = `<script src="https://tikka-frontend-tau.vercel.app/widget.js"></script>
 <div
   data-tikka
-  data-market="SOMI-USD"
-  data-window="1h"
+  data-market="BTC-USD"
+  data-window="15m"
   data-theme="auto"
   data-size="compact"
 ></div>`;
 
-const mountExample = `<script src="https://cdn.tikka.dev/widget.js"></script>
+const mountExample = `<script src="https://tikka-frontend-tau.vercel.app/widget.js"></script>
 <div id="my-widget"></div>
 <script>
   Tikka.mount(document.getElementById("my-widget"), {
-    market: "SOMI-USD",
-    window: "1h",
+    market: "BTC-USD",
+    window: "15m",
     theme: "dark",
   });
 </script>`;

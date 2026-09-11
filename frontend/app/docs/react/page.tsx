@@ -6,8 +6,8 @@ const basicExample = `import { TikkaWidget } from "@tikka/widget/react";
 export function TokenPage() {
   return (
     <TikkaWidget
-      market="SOMI-USD"
-      window="1h"
+      market="BTC-USD"
+      window="15m"
       theme="auto"
       size="compact"
       onSettled={(result) => console.log(result)}
@@ -24,8 +24,8 @@ export function TokenPage() {
   return (
     <>
       <TikkaWidget
-        market="SOMI-USD"
-        window="1h"
+        market="BTC-USD"
+        window="15m"
         onConnected={({ address }) => {
           console.log("Wallet connected:", address);
         }}

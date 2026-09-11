@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { CodeBlock } from "@/components/code-block";
 
-const scriptTagExample = `<script src="https://cdn.tikka.dev/widget.js"></script>
+const scriptTagExample = `<script src="https://tikka-frontend-tau.vercel.app/widget.js"></script>
 <div
   data-tikka
-  data-market="SOMI-USD"
-  data-window="1h"
+  data-market="BTC-USD"
+  data-window="15m"
   data-theme="auto"
   data-size="compact"
 ></div>`;
@@ -15,8 +15,8 @@ const reactExample = `import { TikkaWidget } from "@tikka/widget/react";
 export function TokenPage() {
   return (
     <TikkaWidget
-      market="SOMI-USD"
-      window="1h"
+      market="BTC-USD"
+      window="15m"
       theme="auto"
       size="compact"
       onSettled={(result) => console.log(result)}
@@ -52,6 +52,12 @@ export default function DocsIndexPage() {
       <div className="mt-4 max-w-[46rem]">
         <CodeBlock code="npm install @tikka/widget" language="bash" />
       </div>
+      <p className="mt-4 max-w-[46rem] text-[0.95rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+        Until then, the built bundle is live and reachable today at{" "}
+        <code className="font-mono">https://tikka-frontend-tau.vercel.app/widget.js</code>{" "}
+        — use that URL directly in a script tag to try the real thing right
+        now.
+      </p>
 
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold">
         Quickstart

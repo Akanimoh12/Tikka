@@ -8,7 +8,7 @@ one React component and gets a live Up/Down prediction card, wired to a
 real wallet and settling on-chain through DreamDEX on Somnia.
 
 ```html
-<script src="https://cdn.tikka.dev/widget.js" data-market="SOMI-USD" data-window="1h"></script>
+<script src="https://tikka-frontend-tau.vercel.app/widget.js" data-market="BTC-USD" data-window="15m"></script>
 ```
 
 Drop it anywhere. Get a live prediction market.
@@ -18,7 +18,7 @@ lets any builder on Somnia add Event Contracts to their product without
 building order execution, settlement polling, or wallet plumbing
 themselves. Built for the Somnia × DreamDEX Event Contracts Hackathon.
 
-**Live demo:** _(add the Vercel URL here after deploying)_
+**Live demo:** https://tikka-frontend-tau.vercel.app/
 
 ## Repo structure
 
@@ -129,7 +129,7 @@ Next.js serves anything in `frontend/public/` as a static file at the
 site root, so once `frontend` is deployed, the bundle is reachable at:
 
 ```
-https://<your-vercel-deployment>.vercel.app/widget.js
+https://tikka-frontend-tau.vercel.app/widget.js
 ```
 
 You can test this locally right now:
@@ -146,14 +146,14 @@ current IIFE bundle (verified: 200 OK, ~900 KB).
 
 ```html
 <script src="http://localhost:3000/widget.js"></script>
-<div data-tikka data-market="SOMI-USD" data-window="1h" data-theme="auto" data-size="compact"></div>
+<div data-tikka data-market="BTC-USD" data-window="15m" data-theme="auto" data-size="compact"></div>
 ```
 
-**Embed snippet — after deploying to Vercel (fill in your URL):**
+**Embed snippet — live right now:**
 
 ```html
-<script src="https://<your-vercel-deployment>.vercel.app/widget.js"></script>
-<div data-tikka data-market="SOMI-USD" data-window="1h" data-theme="auto" data-size="compact"></div>
+<script src="https://tikka-frontend-tau.vercel.app/widget.js"></script>
+<div data-tikka data-market="BTC-USD" data-window="15m" data-theme="auto" data-size="compact"></div>
 ```
 
 Once a custom domain (`cdn.tikka.dev` or similar, pointed at this same

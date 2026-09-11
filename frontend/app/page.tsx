@@ -3,7 +3,7 @@ import { HeroWidget } from "@/components/hero-widget";
 import { CodeBlock } from "@/components/code-block";
 import Footer from "@/components/footer";
 
-const EMBED_SNIPPET = `<script src="https://cdn.tikka.dev/widget.js" data-market="SOMI-USD" data-window="1h"></script>`;
+const EMBED_SNIPPET = `<script src="https://tikka-frontend-tau.vercel.app/widget.js" data-market="BTC-USD" data-window="15m"></script>`;
 
 const STEPS = [
   {
