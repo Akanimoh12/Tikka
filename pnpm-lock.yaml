@@ -10,6 +10,9 @@ importers:
 
   frontend:
     dependencies:
+      '@tikka/widget':
+        specifier: workspace:*
+        version: link:../sdk
       next:
         specifier: ^15.5.0
         version: 15.5.25(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
