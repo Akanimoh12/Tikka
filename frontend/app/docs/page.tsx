@@ -1,47 +1,108 @@
 import Link from "next/link";
+import { CodeBlock } from "@/components/code-block";
+
+const scriptTagExample = `<script src="https://cdn.tikka.dev/widget.js"></script>
+<div
+  data-tikka
+  data-market="SOMI-USD"
+  data-window="1h"
+  data-theme="auto"
+  data-size="compact"
+></div>`;
+
+const reactExample = `import { TikkaWidget } from "@tikka/widget/react";
+
+export function TokenPage() {
+  return (
+    <TikkaWidget
+      market="SOMI-USD"
+      window="1h"
+      theme="auto"
+      size="compact"
+      onSettled={(result) => console.log(result)}
+    />
+  );
+}`;
 
 export default function DocsIndexPage() {
   return (
     <div className="of-container of-section-padding">
-      <h1 className="of-h1-hero font-[family-name:var(--font-display)] text-[clamp(3rem,6vw,5.5rem)]">
+      <p className="text-[0.72rem] font-bold uppercase tracking-[0.1em] text-[var(--of-violet)]">
         Docs
+      </p>
+      <h1 className="of-h2-section mt-3 font-[family-name:var(--font-display)]">
+        Tikka docs
       </h1>
       <p className="of-lede-section mt-6 text-[var(--of-muted)]">
-        Tikka is a drop-in prediction widget. Embed it with a script tag on
-        any page, or import the React component if you&apos;re already
-        building in React. Either way you get the same widget, mounted in a
-        shadow DOM so it never fights your CSS.
+        Tikka is a drop-in prediction widget for DreamDEX Event Contracts on
+        Somnia. Embed one script tag or import one React component, and any
+        page gets a live Up/Down prediction card wired to a real wallet,
+        settling on-chain through DreamDEX.
       </p>
 
-      <div className="mt-10 border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-ink)] text-[var(--of-paper)] max-w-[42rem]">
-        <div className="flex items-center justify-between border-b-2 border-[var(--of-paper)]/20 px-4 py-2">
-          <span className="text-[0.75rem] font-bold uppercase tracking-wide text-[var(--of-paper)]/70">
-            Terminal
-          </span>
-          <span className="of-pill border-2 border-[var(--of-paper)]/40 px-3 py-1 text-[0.7rem] font-bold">
-            Copy
-          </span>
-        </div>
-        <pre className="px-4 py-5 overflow-x-auto">
-          <code className="font-mono text-[0.95rem] font-semibold">
-            npm install @tikka/widget
-          </code>
-        </pre>
+      <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold">
+        Install
+      </h2>
+      <p className="mt-3 max-w-[46rem] text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+        <code className="font-mono">@tikka/widget</code> is currently built
+        and versioned inside this monorepo and is not yet published to the
+        public npm registry. Once published, installing it will look like
+        this:
+      </p>
+      <div className="mt-4 max-w-[46rem]">
+        <CodeBlock code="npm install @tikka/widget" language="bash" />
       </div>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2">
+      <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold">
+        Quickstart
+      </h2>
+      <p className="mt-3 max-w-[46rem] text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
+        Both embed modes mount the identical widget. Pick whichever matches
+        the host page.
+      </p>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div>
+          <h3 className="font-[family-name:var(--font-display)] text-[1.1rem] font-extrabold">
+            Script tag
+          </h3>
+          <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
+            Framework-agnostic. Works on any HTML page.
+          </p>
+          <div className="mt-4">
+            <CodeBlock code={scriptTagExample} language="html" />
+          </div>
+        </div>
+        <div>
+          <h3 className="font-[family-name:var(--font-display)] text-[1.1rem] font-extrabold">
+            React
+          </h3>
+          <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
+            A typed component for apps already running React.
+          </p>
+          <div className="mt-4">
+            <CodeBlock code={reactExample} language="tsx" />
+          </div>
+        </div>
+      </div>
+
+      <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold">
+        Full references
+      </h2>
+      <div className="mt-6 grid gap-6 sm:grid-cols-2">
         <Link
           href="/docs/script-tag"
           className="of-transition block border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-warm)] p-6 hover:-translate-y-1 hover:of-shadow-md"
         >
           <span className="of-pill border-2 border-[var(--of-ink)] bg-[var(--of-blue)] px-3 py-1 text-[0.7rem] font-extrabold uppercase">
-            Quickstart
+            Reference
           </span>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-[1.6rem] font-extrabold leading-tight">
+          <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold leading-tight">
             Script tag
-          </h2>
+          </h3>
           <p className="mt-2 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
-            Framework-agnostic. Drop one script tag and a div on any page.
+            The [data-tikka] auto-scan attributes and the Tikka.mount
+            programmatic API.
           </p>
         </Link>
 
@@ -50,18 +111,16 @@ export default function DocsIndexPage() {
           className="of-transition block border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-warm)] p-6 hover:-translate-y-1 hover:of-shadow-md"
         >
           <span className="of-pill border-2 border-[var(--of-ink)] bg-[var(--of-mint)] px-3 py-1 text-[0.7rem] font-extrabold uppercase">
-            Quickstart
+            Reference
           </span>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-[1.6rem] font-extrabold leading-tight">
-            React
-          </h2>
+          <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.4rem] font-extrabold leading-tight">
+            React component
+          </h3>
           <p className="mt-2 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)]">
-            A typed component with props instead of data-attributes.
+            Every prop on TikkaWidget, with a callback usage example.
           </p>
         </Link>
-      </div>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
         <Link
           href="/docs/events"
           className="of-transition block border-2 border-[var(--of-ink)] of-shadow-sm p-5 hover:-translate-y-1 hover:of-shadow"
@@ -81,7 +140,7 @@ export default function DocsIndexPage() {
             Core API reference
           </h3>
           <p className="mt-2 text-[0.85rem] font-semibold text-[var(--of-muted)]">
-            For building custom UI directly on packages/core.
+            For building custom UI directly on @tikka/core.
           </p>
         </Link>
       </div>

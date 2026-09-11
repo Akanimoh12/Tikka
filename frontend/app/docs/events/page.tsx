@@ -1,3 +1,5 @@
+import { CodeBlock } from "@/components/code-block";
+
 const events = [
   {
     name: "tikka:connected",
@@ -7,19 +9,30 @@ const events = [
   {
     name: "tikka:submitted",
     payload: "{ txHash, predictionId, direction, stake }",
-    fires: "Prediction transaction sent",
+    fires: "Prediction transaction is sent",
   },
   {
     name: "tikka:settled",
     payload: '{ predictionId, outcome: "won" | "lost", payout }',
-    fires: "Settlement received",
+    fires: "Settlement is received",
   },
   {
     name: "tikka:error",
     payload: "{ code, message }",
-    fires: "Any error state entered",
+    fires: "Any error state is entered",
   },
 ];
+
+const listenExample = `document
+  .getElementById("my-widget")
+  .addEventListener("tikka:settled", (event) => {
+    const { predictionId, outcome, payout } = event.detail;
+    if (outcome === "won") {
+      console.log(\`Prediction \${predictionId} won, payout \${payout}\`);
+    } else {
+      console.log(\`Prediction \${predictionId} lost\`);
+    }
+  });`;
 
 export default function EventsDocsPage() {
   return (
@@ -88,22 +101,17 @@ export default function EventsDocsPage() {
         </table>
       </div>
 
-      <div className="mt-10 border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-ink)] text-[var(--of-paper)] max-w-[46rem]">
-        <div className="flex items-center justify-between border-b-2 border-[var(--of-paper)]/20 px-4 py-2">
-          <span className="text-[0.75rem] font-bold uppercase tracking-wide text-[var(--of-paper)]/70">
-            listen.js
-          </span>
-          <span className="of-pill border-2 border-[var(--of-paper)]/40 px-3 py-1 text-[0.7rem] font-bold">
-            Copy
-          </span>
-        </div>
-        <pre className="px-4 py-5 overflow-x-auto text-[0.85rem] leading-[1.7]">
-          <code className="font-mono font-semibold">{`document
-  .getElementById("my-widget")
-  .addEventListener("tikka:settled", (event) => {
-    console.log(event.detail);
-  });`}</code>
-        </pre>
+      <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
+        Listening without React
+      </h2>
+      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+        This is the framework-agnostic escape hatch: any host page can react
+        to a settlement, a submitted prediction, or an error with plain{" "}
+        <code className="font-mono">addEventListener</code>, no React
+        wrapper required.
+      </p>
+      <div className="mt-6 max-w-[46rem]">
+        <CodeBlock code={listenExample} language="js" />
       </div>
     </div>
   );

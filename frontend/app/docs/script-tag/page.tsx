@@ -1,3 +1,24 @@
+import { CodeBlock } from "@/components/code-block";
+
+const scanExample = `<script src="https://cdn.tikka.dev/widget.js"></script>
+<div
+  data-tikka
+  data-market="SOMI-USD"
+  data-window="1h"
+  data-theme="auto"
+  data-size="compact"
+></div>`;
+
+const mountExample = `<script src="https://cdn.tikka.dev/widget.js"></script>
+<div id="my-widget"></div>
+<script>
+  Tikka.mount(document.getElementById("my-widget"), {
+    market: "SOMI-USD",
+    window: "1h",
+    theme: "dark",
+  });
+</script>`;
+
 export default function ScriptTagDocsPage() {
   return (
     <div className="of-container of-section-padding">
@@ -11,28 +32,12 @@ export default function ScriptTagDocsPage() {
         Works on any page, framework or none. Load the script once, then add
         a widget div wherever you want a market embedded. The script scans
         the page for <code className="font-mono">[data-tikka]</code>{" "}
-        elements on load and mounts an instance into each.
+        elements on load and mounts an instance into each. React is not
+        required for this mode.
       </p>
 
-      <div className="mt-10 border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-ink)] text-[var(--of-paper)] max-w-[46rem]">
-        <div className="flex items-center justify-between border-b-2 border-[var(--of-paper)]/20 px-4 py-2">
-          <span className="text-[0.75rem] font-bold uppercase tracking-wide text-[var(--of-paper)]/70">
-            index.html
-          </span>
-          <span className="of-pill border-2 border-[var(--of-paper)]/40 px-3 py-1 text-[0.7rem] font-bold">
-            Copy
-          </span>
-        </div>
-        <pre className="px-4 py-5 overflow-x-auto text-[0.85rem] leading-[1.7]">
-          <code className="font-mono font-semibold">{`<script src="https://cdn.tikka.dev/widget.js"></script>
-<div
-  data-tikka
-  data-market="SOMI-USD"
-  data-window="1h"
-  data-theme="auto"
-  data-size="compact"
-></div>`}</code>
-        </pre>
+      <div className="mt-10 max-w-[46rem]">
+        <CodeBlock code={scanExample} language="html" />
       </div>
 
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
@@ -62,7 +67,8 @@ export default function ScriptTagDocsPage() {
                 Yes
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                A market symbol from GET /v0/markets.
+                A market symbol. Check /docs/api or DreamDEX&apos;s markets
+                for currently live symbols on Shannon testnet.
               </td>
             </tr>
             <tr>
@@ -73,8 +79,10 @@ export default function ScriptTagDocsPage() {
                 Yes
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                One of the market&apos;s available prediction windows, e.g.
-                1h.
+                One of the Event Contract windows DreamDEX supports for that
+                market (e.g. 1h). Available windows vary by market, so
+                validate against the market&apos;s actual windows rather than
+                assuming one is always open.
               </td>
             </tr>
             <tr>
@@ -85,15 +93,15 @@ export default function ScriptTagDocsPage() {
                 No
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                light, dark, or auto (default). Auto follows the host
-                page&apos;s color scheme.
+                light, dark, or auto. Defaults to auto, which follows the
+                host page&apos;s prefers-color-scheme.
               </td>
             </tr>
             <tr>
               <td className="px-4 py-3 font-mono">data-size</td>
               <td className="px-4 py-3">No</td>
               <td className="px-4 py-3 text-[var(--of-muted)]">
-                compact (default) or full.
+                compact or full. Defaults to compact.
               </td>
             </tr>
           </tbody>
@@ -104,30 +112,20 @@ export default function ScriptTagDocsPage() {
         Mounting programmatically
       </h2>
       <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
-        If your page builds the element dynamically, call{" "}
-        <code className="font-mono">Tikka.mount</code> directly instead of
-        relying on the scan.
+        If your page builds the element dynamically — after a route change,
+        inside a component you render client-side, or in response to user
+        action — call <code className="font-mono">Tikka.mount(element, config)</code>{" "}
+        directly instead of relying on the page-load scan. The script exposes
+        a global <code className="font-mono">Tikka</code> object with a{" "}
+        <code className="font-mono">mount</code> function once it loads.
+        Fields default the same way as the data attributes:{" "}
+        <code className="font-mono">theme</code> defaults to{" "}
+        <code className="font-mono">&quot;auto&quot;</code> and{" "}
+        <code className="font-mono">size</code> defaults to{" "}
+        <code className="font-mono">&quot;compact&quot;</code> when omitted.
       </p>
-      <div className="mt-6 border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-ink)] text-[var(--of-paper)] max-w-[46rem]">
-        <div className="flex items-center justify-between border-b-2 border-[var(--of-paper)]/20 px-4 py-2">
-          <span className="text-[0.75rem] font-bold uppercase tracking-wide text-[var(--of-paper)]/70">
-            index.html
-          </span>
-          <span className="of-pill border-2 border-[var(--of-paper)]/40 px-3 py-1 text-[0.7rem] font-bold">
-            Copy
-          </span>
-        </div>
-        <pre className="px-4 py-5 overflow-x-auto text-[0.85rem] leading-[1.7]">
-          <code className="font-mono font-semibold">{`<script src="https://cdn.tikka.dev/widget.js"></script>
-<div id="my-widget"></div>
-<script>
-  Tikka.mount(document.getElementById("my-widget"), {
-    market: "SOMI-USD",
-    window: "1h",
-    theme: "dark",
-  });
-</script>`}</code>
-        </pre>
+      <div className="mt-6 max-w-[46rem]">
+        <CodeBlock code={mountExample} language="html" />
       </div>
     </div>
   );

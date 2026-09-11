@@ -1,29 +1,7 @@
-export default function ReactDocsPage() {
-  return (
-    <div className="of-container of-section-padding">
-      <p className="text-[0.8rem] font-bold uppercase tracking-wide text-[var(--of-mint)]">
-        Reference
-      </p>
-      <h1 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(2.6rem,5vw,4.5rem)] font-black leading-[0.95] tracking-[-0.045em]">
-        React component
-      </h1>
-      <p className="of-lede-section mt-6 text-[var(--of-muted)]">
-        A typed wrapper around the same widget the script tag mounts, so you
-        get props and callbacks instead of data-attributes and DOM events.
-        Peer-depends on your app&apos;s existing React install.
-      </p>
+import Link from "next/link";
+import { CodeBlock } from "@/components/code-block";
 
-      <div className="mt-10 border-2 border-[var(--of-ink)] of-shadow bg-[var(--of-ink)] text-[var(--of-paper)] max-w-[46rem]">
-        <div className="flex items-center justify-between border-b-2 border-[var(--of-paper)]/20 px-4 py-2">
-          <span className="text-[0.75rem] font-bold uppercase tracking-wide text-[var(--of-paper)]/70">
-            TokenPage.tsx
-          </span>
-          <span className="of-pill border-2 border-[var(--of-paper)]/40 px-3 py-1 text-[0.7rem] font-bold">
-            Copy
-          </span>
-        </div>
-        <pre className="px-4 py-5 overflow-x-auto text-[0.85rem] leading-[1.7]">
-          <code className="font-mono font-semibold">{`import { TikkaWidget } from "@tikka/widget/react";
+const basicExample = `import { TikkaWidget } from "@tikka/widget/react";
 
 export function TokenPage() {
   return (
@@ -35,17 +13,64 @@ export function TokenPage() {
       onSettled={(result) => console.log(result)}
     />
   );
-}`}</code>
-        </pre>
+}`;
+
+const callbacksExample = `import { useState } from "react";
+import { TikkaWidget } from "@tikka/widget/react";
+
+export function TokenPage() {
+  const [lastResult, setLastResult] = useState<string | null>(null);
+
+  return (
+    <>
+      <TikkaWidget
+        market="SOMI-USD"
+        window="1h"
+        onConnected={({ address }) => {
+          console.log("Wallet connected:", address);
+        }}
+        onSubmitted={({ txHash, direction, stake }) => {
+          console.log(\`Predicted \${direction} for \${stake}, tx \${txHash}\`);
+        }}
+        onSettled={({ outcome, payout }) => {
+          setLastResult(
+            outcome === "won" ? \`Won, payout \${payout}\` : "Lost"
+          );
+        }}
+        onError={({ code, message }) => {
+          console.error(\`Tikka error (\${code}): \${message}\`);
+        }}
+      />
+      {lastResult && <p>{lastResult}</p>}
+    </>
+  );
+}`;
+
+export default function ReactDocsPage() {
+  return (
+    <div className="of-container of-section-padding">
+      <p className="text-[0.8rem] font-bold uppercase tracking-wide text-[var(--of-mint)]">
+        Reference
+      </p>
+      <h1 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(2.6rem,5vw,4.5rem)] font-black leading-[0.95] tracking-[-0.045em]">
+        React component
+      </h1>
+      <p className="of-lede-section mt-6 text-[var(--of-muted)]">
+        A typed wrapper around the same widget the script tag mounts, so you
+        get props and callbacks instead of data-attributes and DOM events.{" "}
+        <code className="font-mono">react</code> is a peer dependency, marked
+        optional in the package, so it only applies when you import{" "}
+        <code className="font-mono">@tikka/widget/react</code> — it uses your
+        app&apos;s existing React install rather than bundling its own.
+      </p>
+
+      <div className="mt-10 max-w-[46rem]">
+        <CodeBlock code={basicExample} language="tsx" />
       </div>
 
       <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
         Props
       </h2>
-      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
-        This table is representative, not final — packages/core lands next
-        and may add a couple more callbacks.
-      </p>
       <div className="mt-6 border-2 border-[var(--of-ink)] of-shadow-sm overflow-x-auto">
         <table className="w-full border-collapse text-left text-[0.85rem]">
           <thead>
@@ -70,7 +95,7 @@ export function TokenPage() {
                 string
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                Required. A market symbol from GET /v0/markets.
+                Required. A market symbol.
               </td>
             </tr>
             <tr>
@@ -81,7 +106,8 @@ export function TokenPage() {
                 string
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                Required. One of the market&apos;s available windows.
+                Required. One of the market&apos;s available Event Contract
+                windows, e.g. &quot;1h&quot;.
               </td>
             </tr>
             <tr>
@@ -92,7 +118,8 @@ export function TokenPage() {
                 &quot;light&quot; | &quot;dark&quot; | &quot;auto&quot;
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                Defaults to auto.
+                Optional. Defaults to &quot;auto&quot;, which follows the
+                host page&apos;s prefers-color-scheme.
               </td>
             </tr>
             <tr>
@@ -103,20 +130,73 @@ export function TokenPage() {
                 &quot;compact&quot; | &quot;full&quot;
               </td>
               <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
-                Defaults to compact.
+                Optional. Defaults to &quot;compact&quot;.
               </td>
             </tr>
             <tr>
-              <td className="px-4 py-3 font-mono">onSettled</td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 font-mono">
+                onConnected
+              </td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 font-mono text-[var(--of-blue)]">
+                (detail: {"{ address }"}) {"=>"} void
+              </td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
+                Optional. Called when the wallet connects.
+              </td>
+            </tr>
+            <tr>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 font-mono">
+                onSubmitted
+              </td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 font-mono text-[var(--of-blue)]">
+                (detail: {"{ txHash, predictionId, direction, stake }"}) {"=>"}{" "}
+                void
+              </td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
+                Optional. Called when the prediction transaction is sent.
+              </td>
+            </tr>
+            <tr>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 font-mono">
+                onSettled
+              </td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 font-mono text-[var(--of-blue)]">
+                (detail: {'{ predictionId, outcome: "won" | "lost", payout }'})
+                {" => "}void
+              </td>
+              <td className="border-b border-[var(--of-ink)]/15 px-4 py-3 text-[var(--of-muted)]">
+                Optional. Called when settlement is received.
+              </td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-mono">onError</td>
               <td className="px-4 py-3 font-mono text-[var(--of-blue)]">
-                (result) =&gt; void
+                (detail: {"{ code, message }"}) {"=>"} void
               </td>
               <td className="px-4 py-3 text-[var(--of-muted)]">
-                Called when a prediction settles, won or lost.
+                Optional. Called whenever the widget enters an error state.
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <h2 className="mt-14 font-[family-name:var(--font-display)] text-[1.8rem] font-extrabold">
+        Wiring up callbacks
+      </h2>
+      <p className="mt-4 text-[0.9rem] font-semibold leading-[1.5] text-[var(--of-muted)] max-w-[46rem]">
+        Each callback receives the same detail payload as the matching{" "}
+        <Link
+          className="underline decoration-2 underline-offset-2"
+          href="/docs/events"
+        >
+          tikka:* DOM event
+        </Link>
+        . Use them to update your own UI without touching the widget&apos;s
+        internals.
+      </p>
+      <div className="mt-6 max-w-[46rem]">
+        <CodeBlock code={callbacksExample} language="tsx" />
       </div>
     </div>
   );
